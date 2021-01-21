@@ -3,6 +3,7 @@ package com.example.microgram.entities;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
@@ -29,4 +30,7 @@ public class Publication {
     List<Like> publicationLikes;
 
     List<Comment> publicationComments;
+
+    @DBRef
+    private User user;
 }
