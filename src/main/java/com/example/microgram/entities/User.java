@@ -7,6 +7,8 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.List;
+
 @Document(collection = "users")
 @Data
 @AllArgsConstructor
@@ -22,4 +24,8 @@ public class User {
     private String email;
 
     private String password;
+
+    private List<Like> userLikes;
+    private List<Comment> userComments;
+    private List<Publication> userPublications;
 }
