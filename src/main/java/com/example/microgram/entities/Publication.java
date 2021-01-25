@@ -1,26 +1,37 @@
 package com.example.microgram.entities;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
-import java.util.List;
 
+@Document(collection = "publications")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-@ToString
 @Builder
 public class Publication {
+    @Id
+    String id;
+
+    @DBRef
+    private User user;
+
     private String image;
 
     private String description;
 
     private LocalDate publicationDate;
-
-    List<Like> publicationLikes;
-
-    List<Comment> publicationComments;
-
-    private User user;
+    @Override
+    public String toString() {
+        return "Publication{" +
+                "image='" + image + "/" +
+                ", description='" + description + '/' +
+                ", publicationDate=" + publicationDate +
+                ", user=" + user +
+                '}';
+    }
 }

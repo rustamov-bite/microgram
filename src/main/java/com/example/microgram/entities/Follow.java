@@ -13,7 +13,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-@ToString
 @Builder
 public class Follow {
     @Id
@@ -28,4 +27,14 @@ public class Follow {
     private User isFollowed;
 
     private LocalDate followDate;
+
+    @Override
+    public String toString() {
+        return "Follow{" +
+                "id='" + id + '/' +
+                ", follows=" + follows +
+                ", isFollowed=" + isFollowed +
+                ", followDate=" + followDate +
+                '}';
+    }
 }
