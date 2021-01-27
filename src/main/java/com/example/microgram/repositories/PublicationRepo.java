@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface PublicationRepo extends MongoRepository<Publication, String> {
     Publication findPublicationById(String id);
-    List<Publication> findPublicationByUser(User user);
+    List<Publication> findPublicationsByUser(User user);
 }
