@@ -17,9 +17,9 @@ public class User {
     @Id
     private String id;
 
-    String name;
+    private String name;
 
-    String login;
+    private String login;
 
     @Indexed
     private String email;

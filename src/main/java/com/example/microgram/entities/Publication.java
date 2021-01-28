@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @Builder
 public class Publication {
     @Id
-    String id;
+    private String id;
 
     @DBRef
     private User user;

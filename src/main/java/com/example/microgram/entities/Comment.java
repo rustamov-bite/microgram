@@ -15,11 +15,11 @@ import java.time.LocalDate;
 @Builder
 public class Comment {
     @Id
-    String id;
+    private String id;
     @DBRef
-    User user;
+    private User user;
     @DBRef
-    Publication publication;
+    private Publication publication;
 
     private String text;
 
