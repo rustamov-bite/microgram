@@ -96,6 +96,7 @@ public class MainService {
         Publication publication = publicationRepo.findPublicationById(publicationId);
         if (publication.getUser().getId().equals(user.getId())) {
             commentRepo.deleteAll(commentRepo.findCommentsByPublication(publication));
+            pubImageRepo.delete(publication.getImage());
             likeRepo.deleteAll(likeRepo.findLikesByPublication(publication));
             publicationRepo.delete(publication);
         } else {
