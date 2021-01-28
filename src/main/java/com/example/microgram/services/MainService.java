@@ -3,8 +3,11 @@ package com.example.microgram.services;
 import com.example.microgram.entities.*;
 import com.example.microgram.repositories.*;
 import lombok.AllArgsConstructor;
+import org.bson.types.Binary;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +20,7 @@ public class MainService {
     private final PublicationRepo publicationRepo;
     private final LikeRepo likeRepo;
     private final CommentRepo commentRepo;
+    private final PubImageRepo pubImageRepo;
 
     public User findUserByName(String name) {
         return userRepo.findUserByName(name);
@@ -56,11 +60,11 @@ public class MainService {
         return publicationRepo.findPublicationsByUser(userRepo.findUserById(userId));
     }
 
-    public Publication addPublication(String userId, String image, String description) {
+    public Publication addPublication(String userId, MultipartFile image, String description) {
         Publication p = Publication.builder()
                 .id(publicationRepo.findAll().size() + 1 + "")
                 .user(userRepo.findUserById(userId))
-                .image(image)
+                .image(getImage(image))
                 .description(description)
                 .publicationDate(LocalDate.now())
                 .build();
@@ -142,5 +146,25 @@ public class MainService {
                 .build();
         likeRepo.save(l);
         return likeRepo.findLikeById(l.getId());
+    }
+
+    public PubImage getImage(MultipartFile file) {
+        byte[] data = new byte[0];
+        try {
+            data = file.getBytes();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (data.length == 0) {
+            throw new IllegalArgumentException();
+        }
+
+        Binary bData = new Binary(data);
+        PubImage image = PubImage.builder().posterData(bData).build();
+
+        pubImageRepo.save(image);
+
+        return pubImageRepo.findPubImageById(image.getId());
     }
 }

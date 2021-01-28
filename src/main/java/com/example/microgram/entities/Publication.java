@@ -20,11 +20,12 @@ public class Publication {
     @DBRef
     private User user;
 
-    private String image;
+    private PubImage image;
 
     private String description;
 
     private LocalDate publicationDate;
+
     @Override
     public String toString() {
         return "Publication{" +

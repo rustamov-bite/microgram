@@ -7,6 +7,7 @@ import com.example.microgram.dto.UserDto;
 import com.example.microgram.services.MainService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class MainController {
     }
 
     @PostMapping("/publication/{userId}")
-    public PublicationDto addPublication(@PathVariable("userId") String userId, @RequestParam("image") String image,
+    public PublicationDto addPublication(@PathVariable("userId") String userId, @RequestParam("image") MultipartFile image,
                                       @RequestParam("description") String description) {
         return PublicationDto.getPublicationDto(mainService.addPublication(userId, image, description));
     }
