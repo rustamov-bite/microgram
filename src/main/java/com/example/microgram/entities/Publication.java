@@ -20,6 +20,7 @@ public class Publication {
     @DBRef
     private User user;
 
+    @DBRef
     private PubImage image;
 
     private String description;
