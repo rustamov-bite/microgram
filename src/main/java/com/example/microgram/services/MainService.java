@@ -101,15 +101,18 @@ public class MainService {
     }
 
     public Comment addComment(String userId, String publicationId, String text) {
-        Comment comment = Comment.builder()
-                .id(commentRepo.findAll().size() + 1 + "")
-                .user(userRepo.findUserById(userId))
-                .publication(publicationRepo.findPublicationById(publicationId))
-                .text(text)
-                .commentDate(LocalDate.now())
-                .build();
-        commentRepo.save(comment);
-        return commentRepo.findCommentById(comment.getId());
+        if (likeRepo.existsLikeByUserAndPublication(userRepo.findUserById(userId), publicationRepo.findPublicationById(publicationId))) {
+            Comment comment = Comment.builder()
+                    .id(commentRepo.findAll().size() + 1 + "")
+                    .user(userRepo.findUserById(userId))
+                    .publication(publicationRepo.findPublicationById(publicationId))
+                    .text(text)
+                    .commentDate(LocalDate.now())
+                    .build();
+            commentRepo.save(comment);
+            return commentRepo.findCommentById(comment.getId());
+        }
+        throw new IllegalArgumentException();
     }
 
     public List<Comment> deleteComment(String userId, String commentId) {

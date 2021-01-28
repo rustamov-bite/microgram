@@ -4,15 +4,10 @@ import com.example.microgram.dto.CommentDto;
 import com.example.microgram.dto.LikeDto;
 import com.example.microgram.dto.PublicationDto;
 import com.example.microgram.dto.UserDto;
-import com.example.microgram.entities.Comment;
-import com.example.microgram.entities.Like;
-import com.example.microgram.entities.Publication;
-import com.example.microgram.entities.User;
 import com.example.microgram.services.MainService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
