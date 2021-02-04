@@ -3,15 +3,18 @@ package com.example.microgram.dto;
 import com.example.microgram.entities.Comment;
 import com.example.microgram.entities.Publication;
 import com.example.microgram.entities.User;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
 @Builder
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 public class CommentDto {
     private final User user;
     private final Publication publication;

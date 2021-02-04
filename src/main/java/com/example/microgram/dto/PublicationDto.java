@@ -1,27 +1,23 @@
 package com.example.microgram.dto;
 
-import com.example.microgram.entities.PubImage;
 import com.example.microgram.entities.Publication;
 import com.example.microgram.entities.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
+@Data
 @Builder
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 public class PublicationDto {
-    private final User user;
-    private final PubImage image;
-    private final String description;
-    private final LocalDate publicationDate;
 
     public static PublicationDto getPublicationDto(Publication publication) {
         return PublicationDto.builder()
                 .user(publication.getUser())
-                .image(publication.getImage())
+                .imageId(publication.getImageId())
                 .description(publication.getDescription())
                 .publicationDate(publication.getPublicationDate())
                 .build();
@@ -34,4 +30,9 @@ public class PublicationDto {
         }
         return publicationDtos;
     }
+
+    private final User user;
+    private final String imageId;
+    private final String description;
+    private final LocalDate publicationDate;
 }
