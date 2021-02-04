@@ -17,6 +17,7 @@ import java.util.UUID;
 @Builder
 public class Follow {
     @Id
+    @Builder.Default
     private String id = UUID.randomUUID().toString();
 
     @DBRef

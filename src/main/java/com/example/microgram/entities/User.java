@@ -20,6 +20,7 @@ import java.util.UUID;
 @Builder
 public class User implements UserDetails {
     @Id
+    @Builder.Default
     private String id = UUID.randomUUID().toString();
 
     private String name;

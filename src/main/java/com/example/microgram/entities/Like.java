@@ -16,6 +16,7 @@ import java.util.UUID;
 @Builder
 public class Like {
     @Id
+    @Builder.Default
     private String id = UUID.randomUUID().toString();
     @DBRef
     private User user;

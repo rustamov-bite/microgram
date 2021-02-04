@@ -34,7 +34,6 @@ public class UserService implements UserDetailsService {
     public boolean addUser(String name, String login, String email, String password) {
         String encodedPass = SecurityConfig.encoder().encode(password);
         User user = User.builder()
-                .id(userRepo.findAll().size() + 1 + "")
                 .name(name)
                 .login(login)
                 .email(email)
