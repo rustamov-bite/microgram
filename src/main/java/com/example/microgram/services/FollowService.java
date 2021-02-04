@@ -34,7 +34,6 @@ public class FollowService {
 
     public List<Publication> followUser(String userId, String isFollowedId) {
         Follow f = Follow.builder()
-                .id(followRepo.findAll().size() + 1 + "")
                 .follows(userRepo.findUserById(userId))
                 .isFollowed(userRepo.findUserById(isFollowedId))
                 .followDate(LocalDate.now())

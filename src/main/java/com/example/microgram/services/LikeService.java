@@ -22,7 +22,6 @@ public class LikeService {
 
     public Like likePublication(String userId, String publicationId) {
         Like l = Like.builder()
-                .id(likeRepo.findAll().size() + 1 + "")
                 .user(userRepo.findUserById(userId))
                 .publication(publicationRepo.findPublicationById(publicationId))
                 .likeDate(LocalDate.now())

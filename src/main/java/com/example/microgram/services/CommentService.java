@@ -19,7 +19,6 @@ public class CommentService {
 
     public Comment addComment(String userId, String publicationId, String text) {
         Comment comment = Comment.builder()
-                .id(commentRepo.findAll().size() + 1 + "")
                 .user(userRepo.findUserById(userId))
                 .publication(publicationRepo.findPublicationById(publicationId))
                 .text(text)

@@ -29,7 +29,6 @@ public class PublicationService {
     public boolean addPublication(String userId, MultipartFile image, String description) {
         PubImage pubImage = getImage(image);
         Publication p = Publication.builder()
-                .id(publicationRepo.findAll().size() + 1 + "")
                 .user(userRepo.findUserById(userId))
                 .imageId(pubImage.getId())
                 .description(description)
