@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Document(collection = "likes")
 @Data
@@ -15,7 +16,7 @@ import java.time.LocalDate;
 @Builder
 public class Like {
     @Id
-    private String id;
+    private String id = UUID.randomUUID().toString();
     @DBRef
     private User user;
     @DBRef

@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Document(collection = "follows")
 @Data
@@ -16,7 +17,7 @@ import java.time.LocalDate;
 @Builder
 public class Follow {
     @Id
-    private String id;
+    private String id = UUID.randomUUID().toString();
 
     @DBRef
     @Field(name = "follows")
