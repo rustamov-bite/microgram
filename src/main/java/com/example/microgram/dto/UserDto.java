@@ -12,12 +12,16 @@ public class UserDto {
     private final String login;
     private final String email;
     private final String password;
+    private final int followers;
+    private final int followings;
 
     public static UserDto getUserDto(User user) {
         return UserDto.builder()
                 .name(user.getName())
                 .login(user.getLogin())
                 .email(user.getEmail())
+                .followers(user.getFollowers())
+                .followings(user.getFollowings())
                 .build();
     }
 
@@ -28,6 +32,8 @@ public class UserDto {
                 ", login='" + login + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", followers=" + followers +
+                ", followings=" + followings +
                 '}';
     }
 }
