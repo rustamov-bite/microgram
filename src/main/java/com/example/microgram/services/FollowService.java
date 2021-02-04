@@ -2,6 +2,7 @@ package com.example.microgram.services;
 
 import com.example.microgram.entities.Follow;
 import com.example.microgram.entities.Publication;
+import com.example.microgram.entities.User;
 import com.example.microgram.repositories.FollowRepo;
 import com.example.microgram.repositories.PublicationRepo;
 import com.example.microgram.repositories.UserRepo;
@@ -38,6 +39,12 @@ public class FollowService {
                 .isFollowed(userRepo.findUserById(isFollowedId))
                 .followDate(LocalDate.now())
                 .build();
+        User isFollowing = userRepo.findUserById(userId);
+        User isFollowed = userRepo.findUserById(isFollowedId);
+        isFollowing.setFollowings(isFollowing.getFollowings() + 1);
+        isFollowed.setFollowers(isFollowed.getFollowers() + 1);
+        userRepo.save(isFollowing);
+        userRepo.save(isFollowed);
         followRepo.save(f);
         return feedForUser(userId);
     }
