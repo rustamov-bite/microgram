@@ -20,20 +20,9 @@ public class Publication {
     @DBRef
     private User user;
 
-    @DBRef
-    private PubImage image;
+    private String imageId;
 
     private String description;
 
     private LocalDate publicationDate;
-
-    @Override
-    public String toString() {
-        return "Publication{" +
-                "image='" + image + "/" +
-                ", description='" + description + '/' +
-                ", publicationDate=" + publicationDate +
-                ", user=" + user +
-                '}';
-    }
 }
